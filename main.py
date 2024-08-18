@@ -7,6 +7,7 @@ from tkinter import ttk
 import dicionario
 import json
 
+
 from calculo import calculoDeTempo
 #-- Navegação
 
@@ -15,9 +16,9 @@ def mostrarFrame(frame):
     frameInicial.grid_remove()
     frameDeVisu.grid_remove()
     frameDeEscolha.grid_remove()
-    
+
     frame.grid(row=0, column=0, sticky="nsew")
-    
+
 #-- Fim Navegação
 
 #-- Função que obtém os resultados escolhidos pelo usuário em Escolher Exercício
@@ -27,11 +28,11 @@ def obterNumero():
     quantidadeDeExercicios.clear()
     for chave in listaDeChavesDeEscolha:
         quantidadeDeExercicios.append(chave.get())
-    
+
     for chave, valor in dicionario.exerciciosDisponiveis.items():
         ttk.Label(frameDeVisu, text="{} 5x {}".format(chave, quantidadeDeExercicios[c]), font=("Helvetica", 12)).grid(row=valor["id"], column=1, padx=5, pady=5, sticky="nsew")
         c+=1
-    
+
     informacoes = open("test.json", "w")
     json.dump(quantidadeDeExercicios, informacoes)
     informacoes.close()
