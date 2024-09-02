@@ -8,18 +8,11 @@ def converter_segundos(segundos):
 def calculoDeTempo(exercicios):
     tempo = 0.0
     c = 0
-    try:
-        for i in exercicios:
-            tempo += int(i["tempo"]) * int(i['qtd'])
-            c +=1
+    for exer in exercicios:
+        i = exercicios[exer]
+        tempo += int(i["tempo"]) * int(i['qtd'])
+        c +=1
 
+    tempoTotal= converter_segundos(tempo)
 
-
-        tempoTotal= converter_segundos(tempo)
-    except:
-        for i in exercicios:
-            tempo += int(i["tempo"]) * 0
-            c +=1
-
-        tempoTotal= converter_segundos(tempo)
     return tempoTotal
